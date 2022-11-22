@@ -46,8 +46,8 @@ export default Sidemenu;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  /* align-items: center; */
   width: 50px;
 
   .mainMenuBox {
@@ -58,7 +58,7 @@ const Container = styled.div`
     margin-bottom: 30px;
   }
   .mainMenuTitle {
-    font-size: small;
+    font-size: 10px;
   }
 
   .home {

@@ -35,13 +35,14 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
+  justify-content: center;
+  /* align-content: flex-start; */
   flex-wrap: wrap;
   flex-basis: auto;
-
   div {
     border: solid 1px;
-    width: 400px;
+    width: 300px;
+    height: 200px;
     margin: 20px;
   }
 `;

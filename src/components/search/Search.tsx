@@ -20,9 +20,9 @@ const Search = () => {
       </div>
       <div className="inputBox">
         <input type="text" />
-        <button className="inputButton">
+        <div className="inputButton">
           <FontAwesomeIcon icon={faSearch} size="lg" />
-        </button>
+        </div>
       </div>
       <div className="loginBox">
         <FontAwesomeIcon icon={faUser} size="lg" />
