@@ -1,14 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import axios from "axios";
+import Youtube from "../src/service/youtube";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
+const httpClient = axios.create({
+  baseURL: "https://www.googleapis.com/youtube/v3",
+});
+
+const youtube = new Youtube(httpClient);
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <BrowserRouter>
-    <App />
+    <App youtube={youtube} />
   </BrowserRouter>
 );
 

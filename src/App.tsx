@@ -2,20 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import Search from "./components/search/Search";
 import Sidemenu from "./components/sidemenu/Sidemenu";
-// import Main from "./pages/Main/Main";
-import loadable from "@loadable/component";
+import Main from "./pages/Main/Main";
 import { Route, Routes } from "react-router-dom";
+import { YoutubeType } from "./typings/youtube";
 
-const Main = loadable(() => import("./pages/Main/Main"));
+function App(props: YoutubeType) {
+  const { youtube } = props;
 
-function App() {
   return (
     <>
       <Search />
       <Container>
         <Sidemenu />
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main youtube={youtube} />} />
         </Routes>
       </Container>
     </>

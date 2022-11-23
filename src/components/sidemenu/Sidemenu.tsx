@@ -49,7 +49,8 @@ const Container = styled.div`
   justify-content: start;
   /* align-items: center; */
   width: 50px;
-
+  position: fixed;
+  margin-top: 70px;
   .mainMenuBox {
     display: flex;
     flex-direction: column;

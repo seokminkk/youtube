@@ -1,18 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import MainDetail from "./MainDetail";
+import { IYoutube, YoutubeType } from "../../typings/youtube";
+import Youtube from "../../service/youtube";
 
-const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&chart=mostPopular&maxResults=10&key=AIzaSyDcqVlSTiOX4LFrfN-L-AaSdbPv1r9KYUQ`;
+// const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&chart=mostPopular&maxResults=10&key=AIzaSyDcqVlSTiOX4LFrfN-L-AaSdbPv1r9KYUQ`;
+//1. 처음 메인페이지에서 동영상들을 나타내줘야함
+//2. 검색시 동영상들도 나타내줘야함
+//3. 동영상 클릭시 그동영상 동영상만 나오는 페이지 필요
 
-const Main = () => {
-  const [playlist, setPlaylist] = useState([]);
-  let mainurl =
-    "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCTQVIXvcHrR9jYoJ6qaBAow&maxResults=5&key=AIzaSyDcqVlSTiOX4LFrfN-L-AaSdbPv1r9KYUQ";
+const Main: Function = (props: YoutubeType): JSX.Element => {
+  const { youtube } = props;
+  const [playlist, setPlaylist] = useState<IYoutube[]>([]);
+  let mainurl = `https://www.googleapis.com/youtube/v3/search?q=르세라핌&part=snippet&type=video&maxResults=25&key=AIzaSyDcqVlSTiOX4LFrfN-L-AaSdbPv1r9KYUQ`;
+
   const getVideo = () => {
     axios
       .get(mainurl)
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data.items);
         setPlaylist(res.data.items);
       })
       .catch((err) => console.log(err));
@@ -22,10 +29,9 @@ const Main = () => {
   }, []);
   return (
     <Container>
-      <div>ffffff</div> <div>22222222</div>
-      <div>3333333</div>
-      <div>4444444</div>
-      <div>5555555</div>
+      {playlist.map((item) => (
+        <MainDetail item={item} key={item.etag} />
+      ))}
     </Container>
   );
 };
@@ -39,10 +45,6 @@ const Container = styled.div`
   /* align-content: flex-start; */
   flex-wrap: wrap;
   flex-basis: auto;
-  div {
-    border: solid 1px;
-    width: 300px;
-    height: 200px;
-    margin: 20px;
-  }
+  margin-top: 70px;
+  margin-left: 50px;
 `;

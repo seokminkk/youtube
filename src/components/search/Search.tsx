@@ -36,6 +36,9 @@ export default Search;
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  background-color: white;
   .menuBox {
     display: flex;
     align-items: center;
@@ -73,6 +76,7 @@ const Container = styled.div`
   }
 
   .loginBox {
+    margin-right: 10px;
     display: flex;
     align-items: center;
     white-space: nowrap;
