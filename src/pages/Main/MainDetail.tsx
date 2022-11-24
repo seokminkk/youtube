@@ -1,19 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import { FC } from "react";
-import { IYoutube } from "../../typings/youtube";
+import { IYoutube, GetVideoId } from "../../typings/youtube";
 
 type youtubeprops = {
   item: IYoutube;
 };
 
-const MainDetail: FC<youtubeprops> = ({ item }) => {
+const MainDetail: FC<youtubeprops & GetVideoId> = ({ item, setvideoId }) => {
   let titleName = item.snippet.title.replaceAll("&#39;", "'");
+
+  const throwVideoId = () => {
+    setvideoId(item.id.videoId);
+    // console.log("디테일실행되냐", item.id.videoId);
+  };
+
   return (
-    <Container>
+    <Container onClick={throwVideoId}>
       <img className="thumbNail" src={item.snippet.thumbnails.medium.url} />
       <span>{titleName}</span>
-      <span>{}</span>
     </Container>
   );
 };

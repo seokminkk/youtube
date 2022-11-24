@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-const Search = () => {
+import { FC } from "react";
+import { SearchVideo } from "../../typings/youtube";
+
+const Search: FC<SearchVideo> = ({ setSearchVideo }) => {
+  const searchVideo = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      setSearchVideo(e.currentTarget.value);
+      // console.log("이거맞ㄷ아");
+    }
+  };
+
   return (
     <Container>
       <div className="menuBox">
@@ -19,7 +29,7 @@ const Search = () => {
         />
       </div>
       <div className="inputBox">
-        <input type="text" />
+        <input id="inputValue" type="text" onKeyPress={(e) => searchVideo(e)} />
         <div className="inputButton">
           <FontAwesomeIcon icon={faSearch} size="lg" />
         </div>

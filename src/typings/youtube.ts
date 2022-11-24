@@ -1,16 +1,16 @@
 import Youtube from "../service/youtube";
 
-export interface IYoutube {
+export type IYoutube = {
   etag: string;
   id: {
     kind: string;
-    videoID: string;
+    videoId: string;
   };
   kind: string;
   snippet: ISnippet;
-}
+};
 
-export interface ISnippet {
+export type ISnippet = {
   channelId: string;
   channelTitle: string;
   description: string;
@@ -26,11 +26,20 @@ export interface ISnippet {
     standard: { height: number; url: string; width: number };
   };
   title: string;
-}
+};
 
 /**
  * @params youtube api type
  */
 export type YoutubeType = {
   youtube: Youtube;
+};
+
+export type SearchVideo = {
+  setSearchVideo: React.Dispatch<React.SetStateAction<string>>;
+  searchVideo?: string;
+};
+export type GetVideoId = {
+  setvideoId: React.Dispatch<React.SetStateAction<string>>;
+  videoId?: string;
 };

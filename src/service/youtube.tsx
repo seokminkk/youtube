@@ -6,8 +6,11 @@ export default class Youtube {
     this.youtube = this.httpClient;
   }
 
-  async getYoutube() {
-    const response = await this.youtube.get("/", {});
+  async getYoutube(searchVideo: string, max: number = 5) {
+    const response = await this.youtube.get(
+      `/search?q=${searchVideo}&part=snippet&type=video&maxResults=${max}&key=AIzaSyAXhSuIyl8C2F0X0V8j_kiR4Pu56KTqBYo`,
+      {}
+    );
 
     return response;
   }
