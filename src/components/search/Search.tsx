@@ -5,12 +5,16 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { FC } from "react";
-import { SearchVideo } from "../../typings/youtube";
+import { SearchVideo, GetVideoId } from "../../typings/youtube";
 
-const Search: FC<SearchVideo> = ({ setSearchVideo }) => {
+const Search: FC<SearchVideo & GetVideoId> = ({
+  setSearchVideo,
+  setvideoId,
+}) => {
   const searchVideo = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       setSearchVideo(e.currentTarget.value);
+      setvideoId("");
       // console.log("이거맞ㄷ아");
     }
   };

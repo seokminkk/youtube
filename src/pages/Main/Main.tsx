@@ -42,7 +42,7 @@ const Main: FC<YoutubeType> = ({ youtube }) => {
   }, [videoId]);
   return (
     <>
-      <Search setSearchVideo={setSearchVideo} />
+      <Search setSearchVideo={setSearchVideo} setvideoId={setvideoId} />
       <Container>
         <Sidemenu />
         <ThumbNailContainer>
