@@ -1,5 +1,8 @@
 import Youtube from "../service/youtube";
 
+/**
+ * @type youtube search api
+ */
 export type IYoutube = {
   etag: string;
   id: {
@@ -29,7 +32,7 @@ export type ISnippet = {
 };
 
 /**
- * @params youtube api type
+ * @params youtube axios class type
  */
 export type YoutubeType = {
   youtube: Youtube;

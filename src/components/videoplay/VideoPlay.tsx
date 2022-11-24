@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const VideoPlay = () => {
-  return <ThumbNailContainer>VideoPlay</ThumbNailContainer>;
+  return <VideoContainer>VideoPlay</VideoContainer>;
 };
 
 export default VideoPlay;
-const ThumbNailContainer = styled.div`
+const VideoContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;

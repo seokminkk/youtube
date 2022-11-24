@@ -6,14 +6,14 @@ import Sidemenu from "../../components/sidemenu/Sidemenu";
 import PlayListMap from "../../components/playlistmap/PlayListMap";
 import VideoPlay from "../../components/videoplay/VideoPlay";
 
-//1. 처음 메인페이지에서 동영상들을 나타내줘야함
-//2. 검색시 동영상들도 나타내줘야함
+//1. 처음 메인페이지에서 동영상들을 나타내줘야함o
+//2. 검색시 동영상들도 나타내줘야함o
 //3. 동영상 클릭시 그동영상 동영상만 나오는 페이지 필요
 
 /**
- * list 폴더로 빼기
- * 검색컴포넌트 집어넣기
- * getYoutube() 로직정리
+ * list 폴더로 빼기o
+ * 검색컴포넌트 집어넣기o
+ * getYoutube() 로직정리 o
  */
 
 const Main: FC<YoutubeType> = ({ youtube }) => {
@@ -51,7 +51,6 @@ const Main: FC<YoutubeType> = ({ youtube }) => {
           ) : (
             <VideoPlay />
           )}
-          {/* <PlayListMap playlist={playlist} setvideoId={setvideoId} /> */}
         </ThumbNailContainer>
       </Container>
     </>
