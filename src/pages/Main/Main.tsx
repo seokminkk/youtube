@@ -25,32 +25,67 @@ const Main: FC<YoutubeType> = ({ youtube }) => {
   const [searchVideo, setSearchVideo] = useState("르세라핌");
   const [videoId, setvideoId] = useState("");
 
-  const getVideo = (item: any) => {};
+  // const handleGetVideoId = (id: string) => {
+  //   setvideoId(id);
+  // };
+
+  /**
+   * @param id videoId
+   * @param value search value
+   */
+  const handleSetSearchGetvideoId = (id: string, value: string) => {
+    setvideoId(id);
+    setSearchVideo(value);
+  };
 
   useEffect(() => {
     youtube
-      .getYoutube(searchVideo, 5)
+      .getYoutube(searchVideo)
       .then((res) => {
-        console.log(res.data.items);
         setPlaylist(res.data.items);
       })
       .catch((err) => console.log(err));
   }, [searchVideo]);
 
-  useEffect(() => {
-    console.log(videoId);
-  }, [videoId]);
   return (
     <>
-      <Search setSearchVideo={setSearchVideo} setvideoId={setvideoId} />
+      <Search handleSetSearchGetvideoId={handleSetSearchGetvideoId} />
       <Container>
         <Sidemenu />
         <ThumbNailContainer>
           {videoId === "" ? (
-            <PlayListMap playlist={playlist} setvideoId={setvideoId} />
+            <PlayListMap
+              playlist={playlist}
+              handleSetSearchGetvideoId={handleSetSearchGetvideoId}
+            />
           ) : (
-            <VideoPlay />
+            <VideoPlay videoId={videoId} />
           )}
+
+          {/* 
+           삼항연산식 말고 이렇게도 쓸 수 있다.
+          {!videoId.length && (
+            <PlayListMap
+              playlist={playlist}
+              handleSetSearchGetvideoId={handleSetSearchGetvideoId}
+            />
+          )}
+          
+          {videoId.length && <VideoPlay videoId={videoId} />}
+
+          이렇게해도 되는데 화면에 0 아니면 videoid.length 수만큼  화면에 숫자도 같이나옴 
+
+
+          {videoId.length===0 && (
+            <PlayListMap
+              playlist={playlist}
+              handleSetSearchGetvideoId={handleSetSearchGetvideoId}
+            />
+            {videoId.length!==0 && <VideoPlay videoId={videoId} />}
+          )}
+            이런식으로 사용하면 0 아니면 videoid.length 수만큼  화면에 숫자가 화면에 나오지 않음
+        
+          */}
         </ThumbNailContainer>
       </Container>
     </>

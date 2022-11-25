@@ -1,8 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import { MainPropsType } from "../../typings/youtube";
+import YouTube from "react-youtube";
 
-const VideoPlay = () => {
-  return <VideoContainer>VideoPlay</VideoContainer>;
+const VideoPlay: React.FC<MainPropsType> = ({ videoId }) => {
+  return (
+    <VideoContainer>
+      <YouTube
+        videoId={videoId}
+        // opts={{
+        //   width: "600",
+        //   height: "315",
+        //   playerVars: {
+        //     autoplay: 1,
+        //   },
+        // }}
+      ></YouTube>
+    </VideoContainer>
+  );
 };
 
 export default VideoPlay;

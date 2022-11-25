@@ -13,7 +13,7 @@ export default class Youtube {
    */
   async getYoutube(searchVideo: string, max: number = 5) {
     const response = await this.youtube.get(
-      `/search?q=${searchVideo}&part=snippet&type=video&maxResults=${max}&key=AIzaSyAXhSuIyl8C2F0X0V8j_kiR4Pu56KTqBYo`,
+      `/search?q=${searchVideo}&part=snippet&type=video&maxResults=${max}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`,
       {}
     );
 

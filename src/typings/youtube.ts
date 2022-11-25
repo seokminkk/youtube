@@ -23,26 +23,32 @@ export type ISnippet = {
   };
   publishedAt: string;
   thumbnails: {
-    default: { height: number; url: string; width: number };
-    high: { height: number; url: string; width: number };
-    medium: { height: number; url: string; width: number };
-    standard: { height: number; url: string; width: number };
+    default: ThumbNailUrl;
+    high: ThumbNailUrl;
+    medium: ThumbNailUrl;
+    standard: ThumbNailUrl;
   };
   title: string;
 };
 
+export type ThumbNailUrl = {
+  height: number;
+  url: string;
+  width: number;
+};
+
 /**
- * @params youtube axios class type
+ * @type youtube axios class type
  */
 export type YoutubeType = {
   youtube: Youtube;
 };
 
-export type SearchVideo = {
-  setSearchVideo: React.Dispatch<React.SetStateAction<string>>;
-  searchVideo?: string;
-};
-export type GetVideoId = {
-  setvideoId: React.Dispatch<React.SetStateAction<string>>;
+/**
+ * @param id video Id
+ * @param value search value
+ */
+export type MainPropsType = {
+  handleSetSearchGetvideoId?(id: string, value?: string): void;
   videoId?: string;
 };

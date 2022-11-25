@@ -1,21 +1,28 @@
 import React from "react";
 import MainDetail from "../../pages/Main/MainDetail";
-import { IYoutube, GetVideoId } from "../../typings/youtube";
+import { IYoutube, MainPropsType } from "../../typings/youtube";
 
 type MainProp = {
   playlist: IYoutube[];
 };
 
-const PlayListMap: React.FC<MainProp & GetVideoId> = ({
+const PlayListMap: React.FC<MainProp & MainPropsType> = ({
   playlist,
-  setvideoId,
+  handleSetSearchGetvideoId,
 }) => {
   return (
     <>
-      {playlist.length &&
+      {playlist.length !== 0 ? (
         playlist.map((item) => (
-          <MainDetail item={item} key={item.etag} setvideoId={setvideoId} />
-        ))}
+          <MainDetail
+            item={item}
+            key={item.etag}
+            handleSetSearchGetvideoId={handleSetSearchGetvideoId}
+          />
+        ))
+      ) : (
+        <span>로딩중</span>
+      )}
     </>
   );
 };
